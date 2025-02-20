@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match List</title>
+    <style>
+        body {
+            background-color: #4d4d4d;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form">
+        <form action="{% url 'requests:form' forms.id %}" method="post">
+            {% csrf_token %}
+            {{ username.as_p }}
+            <input type="hidden" name="form_id" value="{{ forms.id }}">
+
+            {% for question in questions %}
+            <label for="question">{{ question.title }}</label>
+            <select name="{{ question.id }}">
+                {% for answer in question.answers.all %}
+                <option value="{{ answer.id }}">{{ answer.answer }}</option>
+                {% endfor %}
+            </select>
+            {% endfor %}
+
+            <button type="submit">Submit</button>
+        </form>
+
+    </div>
+</body>
+
+</html>

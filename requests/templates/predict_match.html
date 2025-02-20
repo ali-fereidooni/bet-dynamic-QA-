@@ -1,0 +1,6 @@
+<form method="post">
+    {% csrf_token %}
+    <h2>Predict Winner for {{ match }}</h2>
+    {{ form.as_p }}
+    <button type="submit">Submit Prediction</button>
+</form>
