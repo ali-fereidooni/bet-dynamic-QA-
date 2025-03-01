@@ -1,1 +1,65 @@
-<h2>Your form submitted</h2>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+    <style>
+        body {
+            background-color: #3a3a3a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #1c1c1c;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 400px;
+        }
+
+        .container h1 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            color: red;
+            font-weight: bold;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+
+        .answer {
+            color: orange;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1><span class="highlight">{{ submit.user }}</span> </h1>
+        <ul>
+            {% for question, answer in question_answers.items %}
+            <li>{{ question.title }} - <span class="answer">{{ answer.answer }}</span></li>
+            {% endfor %}
+        </ul>
+        <p>you can screenshot now.</p>
+    </div>
+</body>
+
+</html>
